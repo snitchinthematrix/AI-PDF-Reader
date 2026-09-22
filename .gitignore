@@ -19,3 +19,7 @@ env/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Claude Code local session state
+.claude/
+.ruff_cache/
