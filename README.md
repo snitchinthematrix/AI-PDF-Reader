@@ -82,6 +82,14 @@ dependencies needed in CI.
 - **Errors surface to the user, not a stack trace.** A corrupt/unreadable PDF
   or a scanned/image-only PDF (no extractable text) now shows a clear
   in-app message instead of crashing the app.
+- **Pinned upper bounds on the ML dependencies.** Actually running the app
+  (not just the mocked unit tests) surfaced a real breakage: an unbounded
+  `transformers>=4.40` resolved to a newer major version that dropped the
+  plain-text `question-answering` pipeline task, and the latest
+  `sentence-transformers` in turn requires that newer `transformers`.
+  `requirements.txt` now pins compatible ranges
+  (`transformers>=4.41,<5.0`, `sentence-transformers>=4.1,<5.0`) so a fresh
+  `pip install` doesn't silently resolve to a broken combination.
 
 ## Known limitations / possible next steps
 

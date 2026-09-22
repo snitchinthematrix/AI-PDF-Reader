@@ -1,6 +1,6 @@
 streamlit>=1.32
 PyMuPDF>=1.24
-transformers>=4.40
+transformers>=4.41,<5.0
 torch>=2.2
-sentence-transformers>=2.6
+sentence-transformers>=4.1,<5.0
 numpy>=1.26
