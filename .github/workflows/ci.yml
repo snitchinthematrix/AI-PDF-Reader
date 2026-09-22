@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # The unit tests inject fakes for the ML models (see pdf_reader/analyzer.py),
+      # so CI only needs numpy + pytest, not the full torch/transformers stack.
+      - name: Install test dependencies
+        run: pip install pytest numpy ruff
+
+      - name: Lint
+        run: ruff check .
+
+      - name: Test
+        run: pytest -v

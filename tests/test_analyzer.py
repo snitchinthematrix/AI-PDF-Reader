@@ -5,7 +5,6 @@ tests run with just numpy + pytest installed - no torch/transformers/
 sentence-transformers download required.
 """
 import numpy as np
-import pytest
 
 from pdf_reader.analyzer import DocumentAnalyzer
 

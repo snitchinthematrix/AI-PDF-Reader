@@ -8,7 +8,8 @@ with lightweight fakes - without those multi-gigabyte dependencies installed.
 from __future__ import annotations
 
 import logging
-from typing import Any, Callable, Optional, TypedDict
+from collections.abc import Callable
+from typing import Any, TypedDict
 
 import numpy as np
 
@@ -42,9 +43,9 @@ class DocumentAnalyzer:
 
     def __init__(
         self,
-        sentiment_analyzer: Optional[Callable] = None,
-        embedding_model: Optional[Any] = None,
-        qa_pipeline: Optional[Callable] = None,
+        sentiment_analyzer: Callable | None = None,
+        embedding_model: Any | None = None,
+        qa_pipeline: Callable | None = None,
     ) -> None:
         if sentiment_analyzer is None or embedding_model is None or qa_pipeline is None:
             logger.info("Loading local NLP models (this can take a moment on first run)...")

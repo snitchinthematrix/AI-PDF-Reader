@@ -61,6 +61,10 @@ The unit tests inject lightweight fakes for the sentiment/embedding/QA models
 suite runs in under a second with just `numpy` and `pytest` installed —
 no multi-gigabyte model download required to verify the logic.
 
+GitHub Actions runs `ruff check .` and `pytest -v` on every push and pull
+request (see `.github/workflows/ci.yml`), for the same reason: no heavy ML
+dependencies needed in CI.
+
 ## Notable design decisions
 
 - **Model loading is cached, not repeated.** The original version constructed
